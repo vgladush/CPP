@@ -1,20 +1,73 @@
 # Piscine CPP
 ## The project of school 42
-#### Exercises
-| days | done | total |
-| :--- | :---: | :---: |
-| [Day 00](https://github.com/Dude-Rocker/CPP/blob/master/resources/d00.en.pdf) | 3 | 3 |
-| [Day 01](https://github.com/Dude-Rocker/CPP/blob/master/resources/d01.en.pdf) | 11 | 11 |
-| [Day 02](https://github.com/Dude-Rocker/CPP/blob/master/resources/d02.en.pdf) | 5 | 5 |
-| [Day 03](https://github.com/Dude-Rocker/CPP/blob/master/resources/d03.en.pdf) | 5 | 5 |
-| [Day 04](https://github.com/Dude-Rocker/CPP/blob/master/resources/d04.en.pdf) | 5 | 5 |
-| [Rush 00](https://github.com/Dude-Rocker/CPP/blob/master/resources/rush00.en.pdf) | 1 | 1 |
-| [Day 05](https://github.com/Dude-Rocker/CPP/blob/master/resources/d05.en.pdf) | 6 | 6 |
-| [Day 06](https://github.com/Dude-Rocker/CPP/blob/master/resources/d06.en.pdf) | 3 | 3 |
-| [Day 07](https://github.com/Dude-Rocker/CPP/blob/master/resources/d07.en.pdf) | 3 | 3 |
-| [Day 08](https://github.com/Dude-Rocker/CPP/blob/master/resources/d08.en.pdf) | 3 | 5 |
-| [Rush 01](https://github.com/Dude-Rocker/CPP/blob/master/resources/rush01.en.pdf) | 0 | 1 |
-#### Intra
-![](https://github.com/Dude-Rocker/CPP/blob/master/resources/intra.png)
+
+<table>
+	<tr>
+		<th rowspan="2" align="center">Days</th>
+		<th colspan="2" align="center">Exercises</th>
+		<th rowspan="2" align="center">Intra</th>
+	</tr>
+	<tr>
+		<th align="center">Done</th>
+		<th align="center">Total</th>
+	</tr>
+	<tr>
+		<td align="center"><a href="https://github.com/Dude-Rocker/CPP/blob/master/resources/d00.en.pdf">Day 00</a></td>
+		<td align="center">3</td>
+		<td align="center">3</td>
+		<td rowspan="11" align="center"><img src="https://github.com/Dude-Rocker/CPP/blob/master/resources/intra.png" alt="total result"></td>
+	</tr>
+	<tr>
+		<td align="center"><a href="https://github.com/Dude-Rocker/CPP/blob/master/resources/d01.en.pdf">Day 01</a></td>
+		<td align="center">11</td>
+		<td align="center">11</td>
+	</tr>
+	<tr>
+		<td align="center"><a href="https://github.com/Dude-Rocker/CPP/blob/master/resources/d02.en.pdf">Day 02</a></td>
+		<td align="center">5</td>
+		<td align="center">5</td>
+	</tr>
+	<tr>
+		<td align="center"><a href="https://github.com/Dude-Rocker/CPP/blob/master/resources/d03.en.pdf">Day 03</a></td>
+		<td align="center">5</td>
+		<td align="center">5</td>
+	</tr>
+	<tr>
+		<td align="center"><a href="https://github.com/Dude-Rocker/CPP/blob/master/resources/d04.en.pdf">Day 04</a></td>
+		<td align="center">5</td>
+		<td align="center">5</td>
+	</tr>
+	<tr>
+		<td align="center"><a href="https://github.com/Dude-Rocker/CPP/blob/master/resources/rush00.en.pdf">Rush 00</a></td>
+		<td align="center">1</td>
+		<td align="center">1</td>
+	</tr>
+	<tr>
+		<td align="center"><a href="https://github.com/Dude-Rocker/CPP/blob/master/resources/d05.en.pdf">Day 05</a></td>
+		<td align="center">6</td>
+		<td align="center">6</td>
+	</tr>
+	<tr>
+		<td align="center"><a href="https://github.com/Dude-Rocker/CPP/blob/master/resources/d06.en.pdf">Day 06</a></td>
+		<td align="center">3</td>
+		<td align="center">3</td>
+	</tr>
+	<tr>
+		<td align="center"><a href="https://github.com/Dude-Rocker/CPP/blob/master/resources/d07.en.pdf">Day 07</a></td>
+		<td align="center">3</td>
+		<td align="center">3</td>
+	</tr>
+	<tr>
+		<td align="center"><a href="https://github.com/Dude-Rocker/CPP/blob/master/resources/d08.en.pdf">Day 08</a></td>
+		<td align="center">3</td>
+		<td align="center">5</td>
+	</tr>
+	<tr>
+		<td align="center"><a href="https://github.com/Dude-Rocker/CPP/blob/master/resources/rush01.en.pdf">Rush 01</a></td>
+		<td align="center">0</td>
+		<td align="center">1</td>
+	</tr>
+</table>
+
 ## Final result:
 ![](https://github.com/Dude-Rocker/CPP/blob/master/resources/grade.png)
