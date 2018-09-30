@@ -38,7 +38,7 @@
 		<td align="center">5</td>
 	</tr>
 	<tr>
-		<td align="center"><a href="https://github.com/Dude-Rocker/resources/blob/master/piscine_cpp/rush00.pdf">Rush 00</a></td>
+		<td align="center"><a href="https://github.com/Dude-Rocker/resources/blob/master/piscine_cpp/rush00.pdf">Rush00</a></td>
 		<td align="center">1</td>
 		<td align="center">1</td>
 	</tr>
@@ -63,7 +63,7 @@
 		<td align="center">5</td>
 	</tr>
 	<tr>
-		<td align="center"><a href="https://github.com/Dude-Rocker/resources/blob/master/piscine_cpp/rush01.pdf">Rush 01</a></td>
+		<td align="center"><a href="https://github.com/Dude-Rocker/resources/blob/master/piscine_cpp/rush01.pdf">Rush01</a></td>
 		<td align="center">0</td>
 		<td align="center">1</td>
 	</tr>
