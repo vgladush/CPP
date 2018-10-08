@@ -21,12 +21,10 @@ int	main(int ac, char **av) {
 		return 0;
 	}
 	std::string		filename = av[1];
-	std::string		str1 = av[2];
-	std::string		str2 = av[3];
 	std::ifstream	ifs(filename.c_str());
 	std::string		content;
-	std::string		sub = str1;
-	std::string		paste = str2;
+	std::string		sub = av[2];
+	std::string		paste = av[3];
 	
 	if (ifs.good() == true) {
 		while (ifs.eof() == false) {
@@ -40,7 +38,7 @@ int	main(int ac, char **av) {
 		size_t position = content.find(sub, 0);
 		while (position != std::string::npos) {
 			content.replace(position, sub.size(), paste);
-			position = content.find(sub, position + 1);
+			position = content.find(sub, position + paste.size());
 		}
 		std::locale	loc;
 		std::string	replace_filename;
