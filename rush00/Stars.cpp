@@ -5,37 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgladush <vgladush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/06 11:49:21 by vgladush          #+#    #+#             */
-/*   Updated: 2018/08/08 18:23:24 by vgladush         ###   ########.fr       */
+/*   Created: 2018/10/07 12:42:08 by vgladush          #+#    #+#             */
+/*   Updated: 2018/10/07 12:46:26 by vgladush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Stars.hpp"
+#include "Game.hpp"
 
-Stars::Stars() {
-	this->x = 1 + rand() % (WIDTH - 2);
-	this->y = 1 + rand() % (HEIGHT - 2);
+Stars::Stars() : Position()
+{
+	this->_x = 1 + rand() % (WIDTH - 2);
+	this->_y = 1 + rand() % (HEIGHT - 2);
+	return;
 }
 
-Stars::~Stars() {}
+Stars::~Stars() 
+{
+	return;
+}
 
-Stars::Stars(Stars &cpy) {
+Stars::Stars(Stars &cpy) 
+{
 	*this = cpy;
+	return;
 }
 
-Stars& Stars::operator=(Stars &cpy) {
-	this->x = cpy.x;
-	this->y = cpy.y;
+Stars& Stars::operator=(Stars &cpy) 
+{
+	this->_x = cpy._x;
+	this->_y = cpy._y;
 	return *this;
 }
 
-void	Stars::actStars(WINDOW *win, bool s) {
-	if (s) {
-		--this->x;
-		if (!this->x) {
-			this->x = WIDTH - 2;
-			this->y = 1 + rand() % (HEIGHT - 2);
+void	Stars::actStars(WINDOW *win, bool s) 
+{
+	if (s) 
+	{
+		--this->_x;
+		if (!this->_x) 
+		{
+			this->_x = WIDTH - 2;
+			this->_y = 1 + rand() % (HEIGHT - 2);
 		}
 	}
-	mvwaddch(win, this->y, this->x, '.');
+	mvwaddch(win, this->_y, this->_x, '.');
+	return;
 }

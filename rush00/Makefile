@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vgladush <vgladush@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/07/08 21:49:33 by vgladush          #+#    #+#              #
-#    Updated: 2018/08/12 17:51:59 by vgladush         ###   ########.fr        #
+#    Created: 2018/10/07 12:29:41 by vgladush          #+#    #+#              #
+#    Updated: 2018/10/07 12:46:10 by vgladush         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	ft_retro
 CMPL	=	clang++
 FLGS	=	-std=c++98 -Wall -Wextra -Werror
 DIRC	=	./
-FUNC	=	main.cpp Enemy.cpp Bullet.cpp Asteroids.cpp Ship.cpp Window.cpp Stars.cpp
+FUNC	=	main.cpp Enemy.cpp Bullet.cpp Asteroids.cpp Ship.cpp Game.cpp Stars.cpp Position.cpp
 OBJC	=	$(FUNC:.cpp=.o)
 OBJS	=	$(addprefix $(DIRC), $(OBJC))
 
@@ -28,7 +28,7 @@ $(DIRC)%.o: $(DIRC)%.cpp
 	@$(CMPL) $(FLGS) -o $@ -c $<
 
 clean:
-	@rm -f $(NAME)
+	@rm -f $(OBJS)
 	@echo "\x1B[1;31mobjects $(NAME) deleted\x1B[0m"
 
 fclean: clean

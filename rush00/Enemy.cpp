@@ -5,158 +5,201 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgladush <vgladush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/06 11:49:20 by vgladush          #+#    #+#             */
-/*   Updated: 2018/08/08 18:21:56 by vgladush         ###   ########.fr       */
+/*   Created: 2018/10/07 12:44:49 by vgladush          #+#    #+#             */
+/*   Updated: 2018/10/07 12:45:54 by vgladush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Enemy.hpp"
+#include "Game.hpp"
 
-Enemy::Enemy() {
-	this->x = rand() % WIDTH;
-	this->y = rand() % HEIGHT;
+Enemy::Enemy() 
+{
+	this->_x = rand() % WIDTH;
+	this->_y = rand() % HEIGHT;
 	this->hp = 2;
-	this->exist = 0;
+	this->_act = 0;
+	return;
 }
 
-Enemy::~Enemy() {}
+Enemy::~Enemy() 
+{
+	return;
+}
 
-Enemy::Enemy(Enemy &cpy) {
+Enemy::Enemy(Enemy &cpy) 
+{
 	*this = cpy;
+	return;
 }
 
-Enemy& Enemy::operator=(Enemy &cpy) {
-	this->x = cpy.x;
-	this->y = cpy.y;
+Enemy& Enemy::operator=(Enemy &cpy)
+{
+	this->_act = cpy._act;
+	this->_x = cpy._x;
+	this->_y = cpy._y;
 	return *this;
 }
 
-void	Enemy::actEnemy(WINDOW *win, const int &t) {
+void	Enemy::actEnemy(WINDOW *win, const int &t)
+{
 	if (!(t % 2))
-		this->x -= rand() % 2;
-	if (!(t % 24)) {
-		if (this->exist == 2)
-			this->exist = 3;
-		else if (this->exist == 3) {
-			this->exist = 0;
-			this->x = 10;
+		this->_x -= rand() % 2;
+	if (!(t % 24)) 
+	{
+		if (this->_act == 2)
+			this->_act = 3;
+		else if (this->_act == 3) 
+		{
+			this->_act = 0;
+			this->_x = 10;
 		}
-		int r = this->y + (1 - rand() % 3);
-		this->y += (r > HEIGHT - 3 || r < 1 ? this->y - r : r - this->y);
+		int r = this->_y + (1 - rand() % 3);
+		this->_y += (r > HEIGHT - 3 || r < 1 ? this->_y - r : r - this->_y);
 	}
-	if (this->x < 0) {
-		this->x = WIDTH - 4;
-		this->y = 1 + rand() % (HEIGHT - 2);
-		this->exist = 1;
+	if (this->_x < 0)
+	 {
+		this->_x = WIDTH - 4;
+		this->_y = 1 + rand() % (HEIGHT - 2);
+		this->_act = 1;
 	}
-	if (this->exist == 1) {
-		mvwprintw(win, this->y, this->x, "{X]");
-	} else if (this->exist == 2) {
-		mvwprintw(win, this->y - 1, this->x, "-");
-		mvwprintw(win, this->y, this->x - 2, "{ x ]");
-		mvwprintw(win, this->y + 1, this->x, "-");
-	} else if (this->exist == 3) {
-		mvwprintw(win, this->y - 2, this->x - 2, ".");
-		mvwprintw(win, this->y, this->x - 6, ".   .   .");
-		mvwprintw(win, this->y + 2, this->x - 2, ".");
+	if (this->_act == 1) 
+	{
+		mvwprintw(win, this->_y, this->_x, "{X]");
 	}
+	else if (this->_act == 2)
+	{
+		mvwprintw(win, this->_y - 1, this->_x, "-");
+		mvwprintw(win, this->_y, this->_x - 2, "{ x ]");
+		mvwprintw(win, this->_y + 1, this->_x, "-");
+	} 
+	else if (this->_act == 3) 
+	{
+		mvwprintw(win, this->_y - 2, this->_x - 2, ".");
+		mvwprintw(win, this->_y, this->_x - 6, ".   .   .");
+		mvwprintw(win, this->_y + 2, this->_x - 2, ".");
+	}
+	return;
 }
 
-void	Enemy::moveBoss() {
-	if (this->x > WIDTH - 15) {
-		this->x--;
-		if (this->x == WIDTH - 10)
-			this->exist = 2;
-	} else {
-		int r = this->y + (1 - rand() % 3);
-		this->y += (r > HEIGHT - 10 || r < 0 ? this->y - r : r - this->y);
+void	Enemy::moveBoss() 
+{
+	if (this->_x > WIDTH - 15) 
+	{
+		this->_x--;
+		if (this->_x == WIDTH - 10)
+			this->_act = 2;
+	} 
+	else 
+	{
+		int r = this->_y + (1 - rand() % 3);
+		this->_y += (r > HEIGHT - 10 || r < 0 ? this->_y - r : r - this->_y);
 	}
+	return;
 }
 
-void	Enemy::printBoss(WINDOW *win) {
-	if (this->exist < 3 && this->x < WIDTH - 4) {
-		mvwprintw(win, this->y, this->x, "(XX]");
-		mvwprintw(win, this->y + 1, this->x - 1, "(XXX]");
-		mvwprintw(win, this->y + 2, this->x - 2, "(XXXX]");
-		mvwprintw(win, this->y + 3, this->x - 3, "(XXXXX]");
-		mvwprintw(win, this->y + 4, this->x - 4, "(<XXXXX]");
-		mvwprintw(win, this->y + 5, this->x - 3, "(XXXXX]");
-		mvwprintw(win, this->y + 6, this->x - 2, "(XXXX]");
-		mvwprintw(win, this->y + 7, this->x - 1, "(XXX]");
-		mvwprintw(win, this->y + 8, this->x, "(XX]");
-	} else if (this->exist == 1) {
-		if (this->x < WIDTH - 3) {
-			mvwprintw(win, this->y, this->x, "(XX");
-			mvwprintw(win, this->y + 1, this->x - 1, "(XXX");
-			mvwprintw(win, this->y + 2, this->x - 2, "(XXXX");
-			mvwprintw(win, this->y + 3, this->x - 3, "(XXXXX");
-			mvwprintw(win, this->y + 4, this->x - 4, "(<XXXXX");
-			mvwprintw(win, this->y + 5, this->x - 3, "(XXXXX");
-			mvwprintw(win, this->y + 6, this->x - 2, "(XXXX");
-			mvwprintw(win, this->y + 7, this->x - 1, "(XXX");
-			mvwprintw(win, this->y + 8, this->x, "(XX");
-		} else if (this->x < WIDTH - 2) {
-			mvwprintw(win, this->y, this->x, "(X");
-			mvwprintw(win, this->y + 1, this->x - 1, "(XX");
-			mvwprintw(win, this->y + 2, this->x - 2, "(XXX");
-			mvwprintw(win, this->y + 3, this->x - 3, "(XXXX");
-			mvwprintw(win, this->y + 4, this->x - 4, "(<XXXX");
-			mvwprintw(win, this->y + 5, this->x - 3, "(XXXX");
-			mvwprintw(win, this->y + 6, this->x - 2, "(XXX");
-			mvwprintw(win, this->y + 7, this->x - 1, "(XX");
-			mvwprintw(win, this->y + 8, this->x, "(X");
-		} else if (this->x < WIDTH - 1) {
-			mvwprintw(win, this->y, this->x, "(");
-			mvwprintw(win, this->y + 1, this->x - 1, "(X");
-			mvwprintw(win, this->y + 2, this->x - 2, "(XX");
-			mvwprintw(win, this->y + 3, this->x - 3, "(XXX");
-			mvwprintw(win, this->y + 4, this->x - 4, "(<XXX");
-			mvwprintw(win, this->y + 5, this->x - 3, "(XXX");
-			mvwprintw(win, this->y + 6, this->x - 2, "(XX");
-			mvwprintw(win, this->y + 7, this->x - 1, "(X");
-			mvwprintw(win, this->y + 8, this->x, "(");
-		} else if (this->x < WIDTH) {
-			mvwprintw(win, this->y + 1, this->x - 1, "(");
-			mvwprintw(win, this->y + 2, this->x - 2, "(X");
-			mvwprintw(win, this->y + 3, this->x - 3, "(XX");
-			mvwprintw(win, this->y + 4, this->x - 4, "(<XX");
-			mvwprintw(win, this->y + 5, this->x - 3, "(XX");
-			mvwprintw(win, this->y + 6, this->x - 2, "(X");
-			mvwprintw(win, this->y + 7, this->x - 1, "(");
-		} else {
-			mvwprintw(win, this->y + 2, this->x - 2, "(");
-			mvwprintw(win, this->y + 3, this->x - 3, "(X");
-			mvwprintw(win, this->y + 4, this->x - 4, "(<X");
-			mvwprintw(win, this->y + 5, this->x - 3, "(X");
-			mvwprintw(win, this->y + 6, this->x - 2, "(");
+void	Enemy::printBoss(WINDOW *win) 
+{
+	if (this->_act < 3 && this->_x < WIDTH - 4) 
+	{
+		mvwprintw(win, this->_y, this->_x, "(XX]");
+		mvwprintw(win, this->_y + 1, this->_x - 1, "(XXX]");
+		mvwprintw(win, this->_y + 2, this->_x - 2, "(XXXX]");
+		mvwprintw(win, this->_y + 3, this->_x - 3, "(XXXXX]");
+		mvwprintw(win, this->_y + 4, this->_x - 4, "(<XXXXX]");
+		mvwprintw(win, this->_y + 5, this->_x - 3, "(XXXXX]");
+		mvwprintw(win, this->_y + 6, this->_x - 2, "(XXXX]");
+		mvwprintw(win, this->_y + 7, this->_x - 1, "(XXX]");
+		mvwprintw(win, this->_y + 8, this->_x, "(XX]");
+	} 
+	else if (this->_act == 1) 
+	{
+		if (this->_x < WIDTH - 3) 
+		{
+			mvwprintw(win, this->_y, this->_x, "(XX");
+			mvwprintw(win, this->_y + 1, this->_x - 1, "(XXX");
+			mvwprintw(win, this->_y + 2, this->_x - 2, "(XXXX");
+			mvwprintw(win, this->_y + 3, this->_x - 3, "(XXXXX");
+			mvwprintw(win, this->_y + 4, this->_x - 4, "(<XXXXX");
+			mvwprintw(win, this->_y + 5, this->_x - 3, "(XXXXX");
+			mvwprintw(win, this->_y + 6, this->_x - 2, "(XXXX");
+			mvwprintw(win, this->_y + 7, this->_x - 1, "(XXX");
+			mvwprintw(win, this->_y + 8, this->_x, "(XX");
+		} 
+		else if (this->_x < WIDTH - 2) 
+		{
+			mvwprintw(win, this->_y, this->_x, "(X");
+			mvwprintw(win, this->_y + 1, this->_x - 1, "(XX");
+			mvwprintw(win, this->_y + 2, this->_x - 2, "(XXX");
+			mvwprintw(win, this->_y + 3, this->_x - 3, "(XXXX");
+			mvwprintw(win, this->_y + 4, this->_x - 4, "(<XXXX");
+			mvwprintw(win, this->_y + 5, this->_x - 3, "(XXXX");
+			mvwprintw(win, this->_y + 6, this->_x - 2, "(XXX");
+			mvwprintw(win, this->_y + 7, this->_x - 1, "(XX");
+			mvwprintw(win, this->_y + 8, this->_x, "(X");
+		} 
+		else if (this->_x < WIDTH - 1) 
+		{
+			mvwprintw(win, this->_y, this->_x, "(");
+			mvwprintw(win, this->_y + 1, this->_x - 1, "(X");
+			mvwprintw(win, this->_y + 2, this->_x - 2, "(XX");
+			mvwprintw(win, this->_y + 3, this->_x - 3, "(XXX");
+			mvwprintw(win, this->_y + 4, this->_x - 4, "(<XXX");
+			mvwprintw(win, this->_y + 5, this->_x - 3, "(XXX");
+			mvwprintw(win, this->_y + 6, this->_x - 2, "(XX");
+			mvwprintw(win, this->_y + 7, this->_x - 1, "(X");
+			mvwprintw(win, this->_y + 8, this->_x, "(");
+		} 
+		else if (this->_x < WIDTH) 
+		{
+			mvwprintw(win, this->_y + 1, this->_x - 1, "(");
+			mvwprintw(win, this->_y + 2, this->_x - 2, "(X");
+			mvwprintw(win, this->_y + 3, this->_x - 3, "(XX");
+			mvwprintw(win, this->_y + 4, this->_x - 4, "(<XX");
+			mvwprintw(win, this->_y + 5, this->_x - 3, "(XX");
+			mvwprintw(win, this->_y + 6, this->_x - 2, "(X");
+			mvwprintw(win, this->_y + 7, this->_x - 1, "(");
+		} 
+		else 
+		{
+			mvwprintw(win, this->_y + 2, this->_x - 2, "(");
+			mvwprintw(win, this->_y + 3, this->_x - 3, "(X");
+			mvwprintw(win, this->_y + 4, this->_x - 4, "(<X");
+			mvwprintw(win, this->_y + 5, this->_x - 3, "(X");
+			mvwprintw(win, this->_y + 6, this->_x - 2, "(");
 		}
-	} else if (this->exist == 3) {
-		mvwprintw(win, this->y - 4, this->x - 4, ". x x .");
-		mvwprintw(win, this->y - 2, this->x - 5, ". x x x .");
-		mvwprintw(win, this->y, this->x - 6, ". x x x x .");
-		mvwprintw(win, this->y + 2, this->x - 8, ". x x x x x .");
-		mvwprintw(win, this->y + 4, this->x - 9, ". . x x x x x .");
-		mvwprintw(win, this->y + 6, this->x - 8, ". x x x x x .");
-		mvwprintw(win, this->y + 8, this->x - 6, ". x x x x .");
-		mvwprintw(win, this->y + 10, this->x - 5, ". x x x .");
-		mvwprintw(win, this->y + 12, this->x - 4, ". x x .");
-	} else if (this->exist == 4) {
-		mvwprintw(win, this->y - 8, this->x - 6, ".   .");
-		mvwprintw(win, this->y - 5, this->x - 8, ".   x   .");
-		mvwprintw(win, this->y - 2, this->x - 10, ".   x   x   .");
-		mvwprintw(win, this->y + 1, this->x - 12, ".   x   x   x   .");
-		mvwprintw(win, this->y + 4, this->x - 12, ".   x   x   x   .");
-		mvwprintw(win, this->y + 7, this->x - 12, ".   x   x   x   .");
-		mvwprintw(win, this->y + 10, this->x - 10, ".   x   x   .");
-		mvwprintw(win, this->y + 13, this->x - 8, ".   x   .");
-		mvwprintw(win, this->y + 15, this->x - 6, ".   .");
-	} else {
-		mvwprintw(win, this->y - 8, this->x - 6, ".");
-		mvwprintw(win, this->y - 4, this->x - 8, ".     .");
-		mvwprintw(win, this->y, this->x - 12, ".     .     .");
-		mvwprintw(win, this->y + 4, this->x - 12, ".     .     .");
-		mvwprintw(win, this->y + 8, this->x - 12, ".     .     .");
-		mvwprintw(win, this->y + 12, this->x - 8, ".     .");
-		mvwprintw(win, this->y + 16, this->x - 6, ".");
+	} 
+	else if (this->_act == 3) 
+	{
+		mvwprintw(win, this->_y - 4, this->_x - 4, ". x x .");
+		mvwprintw(win, this->_y - 2, this->_x - 5, ". x x x .");
+		mvwprintw(win, this->_y, this->_x - 6, ". x x x x .");
+		mvwprintw(win, this->_y + 2, this->_x - 8, ". x x x x x .");
+		mvwprintw(win, this->_y + 4, this->_x - 9, ". . x x x x x .");
+		mvwprintw(win, this->_y + 6, this->_x - 8, ". x x x x x .");
+		mvwprintw(win, this->_y + 8, this->_x - 6, ". x x x x .");
+		mvwprintw(win, this->_y + 10, this->_x - 5, ". x x x .");
+		mvwprintw(win, this->_y + 12, this->_x - 4, ". x x .");
+	} 
+	else if (this->_act == 4) 
+	{
+		mvwprintw(win, this->_y - 8, this->_x - 6, ".   .");
+		mvwprintw(win, this->_y - 5, this->_x - 8, ".   x   .");
+		mvwprintw(win, this->_y - 2, this->_x - 10, ".   x   x   .");
+		mvwprintw(win, this->_y + 1, this->_x - 12, ".   x   x   x   .");
+		mvwprintw(win, this->_y + 4, this->_x - 12, ".   x   x   x   .");
+		mvwprintw(win, this->_y + 7, this->_x - 12, ".   x   x   x   .");
+		mvwprintw(win, this->_y + 10, this->_x - 10, ".   x   x   .");
+		mvwprintw(win, this->_y + 13, this->_x - 8, ".   x   .");
+		mvwprintw(win, this->_y + 15, this->_x - 6, ".   .");
+	} else 
+	{
+		mvwprintw(win, this->_y - 8, this->_x - 6, ".");
+		mvwprintw(win, this->_y - 4, this->_x - 8, ".     .");
+		mvwprintw(win, this->_y, this->_x - 12, ".     .     .");
+		mvwprintw(win, this->_y + 4, this->_x - 12, ".     .     .");
+		mvwprintw(win, this->_y + 8, this->_x - 12, ".     .     .");
+		mvwprintw(win, this->_y + 12, this->_x - 8, ".     .");
+		mvwprintw(win, this->_y + 16, this->_x - 6, ".");
 	}
+	return;
 }
