@@ -37,6 +37,7 @@ public:
 		char const			*what() const throw();
 	};
 
+	Bureaucrat();
 	Bureaucrat(std::string const &name, int gd);
 	Bureaucrat(Bureaucrat const &cpy);
 	~Bureaucrat();

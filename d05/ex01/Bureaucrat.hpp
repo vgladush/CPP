@@ -34,6 +34,8 @@ class Bureaucrat
 	};
 
 public:
+
+	Bureaucrat();
 	Bureaucrat(std::string const &name, int gd);
 	Bureaucrat(Bureaucrat const &cpy);
 	~Bureaucrat();

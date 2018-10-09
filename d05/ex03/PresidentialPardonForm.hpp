@@ -18,6 +18,7 @@
 class PresidentialPardonForm : public Form
 {
 public:
+	PresidentialPardonForm();
 	PresidentialPardonForm(std::string const &target);
 	PresidentialPardonForm(PresidentialPardonForm const &cpy);
 	void	operator=(PresidentialPardonForm const &cpy);

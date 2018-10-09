@@ -5,15 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgladush <vgladush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/07 12:29:41 by vgladush          #+#    #+#             */
-/*   Updated: 2018/10/07 14:10:08 by vgladush         ###   ########.fr       */
+/*   Created: 2018/08/06 11:49:21 by vgladush          #+#    #+#             */
+/*   Updated: 2018/08/08 18:23:01 by vgladush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Game.hpp"
+#include "Window.hpp"
 
 int main() {
-	Game game;
-	game.start();
+	srand(time(0));
+	Window *win = new Window();
+
+	win->start();
+	delete win;
 	return 0;
 }

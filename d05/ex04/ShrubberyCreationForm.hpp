@@ -18,6 +18,7 @@
 class ShrubberyCreationForm : public Form
 {
 public:
+	ShrubberyCreationForm();
 	ShrubberyCreationForm(std::string const &target);
 	ShrubberyCreationForm(ShrubberyCreationForm const &cpy);
 	void	operator=(ShrubberyCreationForm const &cpy);

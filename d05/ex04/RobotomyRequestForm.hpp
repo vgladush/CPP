@@ -18,6 +18,7 @@
 class RobotomyRequestForm : public Form
 {
 public:
+	RobotomyRequestForm();
 	RobotomyRequestForm(std::string const &target);
 	RobotomyRequestForm(RobotomyRequestForm const &cpy);
 	void	operator=(RobotomyRequestForm const &cpy);

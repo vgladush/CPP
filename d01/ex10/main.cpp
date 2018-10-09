@@ -16,28 +16,27 @@
 
 int	main(int ac, char **av) {
 	std::string	content;
-	std::string buf;
 	if (ac > 1) {
 		for (int i = 1; i < ac; i++) {
 			std::ifstream	ifs(av[i]);
 			if (ifs.good() == true) {
 				while (ifs.eof() == false) {
+					std::string buf;
 					getline(ifs, buf);
 					buf.push_back('\n');
 					content += buf;
 				}
 			} else
-				std::cerr << "Can not open file or it is a directory" << av[i] << std::endl;
-		}
-		std::cout << content;
-	}
-	else {
-		while (1) {
-			std::string buf;
-			if (!getline(std::cin, buf))
-				break ;
-			std::cout << buf << std::endl;
+				std::cout << "Can not open file: " << av[i] << std::endl;
 		}
 	}
+	while (1) {
+		std::string buf;
+		if (!getline(std::cin, buf))
+			break ;
+		buf.push_back('\n');
+		content += buf;
+	}
+	std::cout << content << std::endl;
 	return 0;
 }

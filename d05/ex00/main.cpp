@@ -23,6 +23,8 @@ int main() {
 
 	try {
 		bur.decrement(1);
+		bur.decrement(1);
+		bur.decrement(0);
 
 		std::cout << "Exception's did't work" << std::endl;
 

@@ -33,7 +33,7 @@ class Form
 	};
 
 public:
-	Form(std::string const &name, int sgn, int ex);
+	Form(std::string const &name = "form", int sgn = 50, int ex = 50);
 	Form(Form const &cpy);
 	~Form();
 	void		operator=(Form const &cpy);

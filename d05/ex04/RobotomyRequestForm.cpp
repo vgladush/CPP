@@ -12,6 +12,8 @@
 
 #include "RobotomyRequestForm.hpp"
 
+RobotomyRequestForm::RobotomyRequestForm() {}
+
 RobotomyRequestForm::RobotomyRequestForm(std::string const &target) : Form(target, 72, 45) {}
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &cpy) : Form(cpy) {}

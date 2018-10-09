@@ -12,6 +12,8 @@
 
 #include "PresidentialPardonForm.hpp"
 
+PresidentialPardonForm::PresidentialPardonForm() {}
+
 PresidentialPardonForm::PresidentialPardonForm(std::string const &target) : Form(target, 25, 5) {}
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &cpy) : Form(cpy) {}
