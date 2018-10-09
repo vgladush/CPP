@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Enemy.hpp                                          :+:      :+:    :+:   */
+/*   Position.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgladush <vgladush@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/06 11:49:20 by vgladush          #+#    #+#             */
-/*   Updated: 2018/08/08 18:22:33 by vgladush         ###   ########.fr       */
+/*   Created: 2018/10/07 12:41:43 by vgladush          #+#    #+#             */
+/*   Updated: 2018/10/07 12:46:18 by vgladush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENEMY_HPP
-#define ENEMY_HPP
+#ifndef POSITION_HPP
+#define POSITION_HPP
 
-#include "Constants.hpp"
+class Position
+{
 
-class Enemy {
 public:
-	Enemy();
-	Enemy(Enemy & cpy);
-	~Enemy();
-	Enemy &operator=(Enemy & cpy);
-	void	moveBoss();
-	void	printBoss(WINDOW *win);
-	void	actEnemy(WINDOW *win, const int &t);
+	Position();
+	~Position();
+	Position(Position & cpy);
+	Position &operator=(Position & cpy);
+	void actPosition(WINDOW *win, bool s);
+	int getX();
+	int getY();
+	int getA();
 
-	int exist;
-	int x;
-	int y;
-	int hp;
+	void setX(int);
+	void setY(int);
+	void setA(int);
+
+protected:
+	int _act;
+	int _x;
+	int _y;
 };
 
 #endif
