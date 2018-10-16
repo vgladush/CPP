@@ -84,5 +84,8 @@
 	</tr>
 </table>
 
+## Rush00:
+![](https://github.com/Dude-Rocker/resources/blob/master/piscine_cpp/rush00.gif)
+
 ## Final result:
 ![](https://github.com/Dude-Rocker/resources/blob/master/sucs125.png)
