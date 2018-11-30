@@ -163,21 +163,21 @@ void	Window::set_mus(bool t) {
 		mvwprintw(this->infa, 7, WIDTH / 3 + 50, "sound");
 		wattroff(this->infa, COLOR_PAIR(2));
 		if (!this->health)
-			system("afplay ./sounds/loose.mp3 &");
+			system("afplay ../sounds/loose.mp3 &");
 		else if (this->level == FINAL && this->lvlup)
-			system("afplay ./sounds/fin.mp3 &");
+			system("afplay ../sounds/fin.mp3 &");
 		else if (this->lvlup)
-			system("afplay ./sounds/menu.mp3 &");
+			system("afplay ../sounds/menu.mp3 &");
 		else if (this->level == FINAL && this->enemy[0].exist)
-			system("afplay ./sounds/finboss.mp3 &");
+			system("afplay ../sounds/finboss.mp3 &");
 		else if (this->level == FINAL && !this->enemy[0].exist)
-			system("afplay ./sounds/finlvl.mp3 &");
+			system("afplay ../sounds/finlvl.mp3 &");
 		else if (this->enemy[0].exist)
-			system("afplay ./sounds/boss.mp3 &");
+			system("afplay ../sounds/boss.mp3 &");
 		else if (this->level == 1)
-			system("afplay ./sounds/start.mp3 &");
+			system("afplay ../sounds/start.mp3 &");
 		else
-			system("afplay ./sounds/lvl.mp3 &");
+			system("afplay ../sounds/lvl.mp3 &");
 	}
 	wrefresh(this->infa);
 }
@@ -215,7 +215,7 @@ void	Window::start() {
 	wbkgd(this->frame, COLOR_PAIR(5));
 	wrefresh(this->frame);
 	wclear(this->win);
-	system("afplay ./sounds/start.mp3 &");
+	system("afplay ../sounds/start.mp3 &");
 	this->mus = true;
 	while (1) {
 		int key = std::tolower(wgetch(this->win));

@@ -167,7 +167,7 @@ void	Game::my_clear()
 
 void	Game::set_mus(bool t) 
 {
-	 std::ifstream file;
+	std::ifstream file;
    	if (this->_mus)
 		system("killall afplay");
 	if (t)
