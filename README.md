@@ -88,4 +88,4 @@
 ![](https://github.com/Dude-Rocker/resources/blob/master/piscine_cpp/rush00.gif)
 
 ## Final result:
-![](https://github.com/Dude-Rocker/resources/blob/master/sucs125.png)
+![](https://github.com/Dude-Rocker/resources/blob/master/img/sucs125.png)
